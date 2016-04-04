@@ -13,7 +13,7 @@ describe Statement do
     allow(account).to receive(:history).and_return(x)
   end
 
-  it '-> should print the bank statement in the correct format' do
+  it '-> should print the bank statement in the correct format & order' do
     expect(statement.print_statement(account)).to eq(
       "date || credit || debit || balance\n" \
       "23/12/2016 || || 20.00 || 100.00\n" \
