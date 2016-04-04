@@ -9,12 +9,12 @@ class Account
 
   def deposit(cash, date)
     @balance += cash
-    @history.push(date: date, sum: cash, balance: balance)
+    @history.push({date: date, sum: cash, balance: balance})
   end
 
   def withdraw(cash, date)
     @balance -= cash unless (@balance - cash <= 0)
-    @history.push(date: date, sum: -cash, balance: balance)
+    @history.push({date: date, sum: -cash, balance: balance})
   end
 
 end
