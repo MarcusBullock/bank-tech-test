@@ -20,11 +20,9 @@ describe Account do
     expect(account.history).to include('10/10/2016 || 10.00')
   end
 
-  it '-> should print the statement in the correct format' do
-    account.deposit(100, '09/09/2016')
-    account.withdraw(10, '10/10/2016')
-    expect(account.history).to include([10/10/2016 || || 10.00 || 90.00]
-    expect(account.history).to include([09/09/2016 || 100.00 || || 100.00])
+  it '-> won\'t let money be withdrawn past the 0 mark' do
+    expect{account.withdraw(1, '10/10/2016')}.to_not change{account.balance}
   end
+
 
 end

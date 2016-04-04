@@ -13,7 +13,7 @@ class Account
   end
 
   def withdraw(cash, date)
-    @balance -= cash
+    @balance -= cash unless (@balance - cash <= 0)
     @history << "#{date} || #{'%.2f' % cash.to_f}"
   end
 
