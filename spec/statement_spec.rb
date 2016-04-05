@@ -14,11 +14,14 @@ describe Statement do
   end
 
   it '-> should print the bank statement in the correct format & order' do
-    expect(statement.print_statement(account)).to eq(
-      "date || credit || debit || balance\n" \
-      "23/12/2016 || || 20.00 || 100.00\n" \
-      "21/12/2016 || 100.00 || || 80.00"
-    )
+    expect{statement.print_statement(account)}.to output(
+      "\"date || credit || debit || balance\"\n\"23/12/2016 || || -20.00 || 100.00\"\n\"21/12/2016 || 100.00 || || 80.00\"\n"
+    ).to_stdout
   end
+
+  it '-> can filter statements by deposit' do
+    expect{statement.filter('deposit')}.to output("21/12/2016 || 100.00 || || 80.00\"\n").to_stdout
+  end
+
 
 end

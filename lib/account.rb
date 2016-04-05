@@ -7,14 +7,14 @@ class Account
     @history = []
   end
 
-  def deposit(cash, date)
+  def deposit(cash)
     @balance += cash
-    @history.push({date: date, sum: cash, balance: balance})
+    @history.push({date: Time.now.strftime("%d/%m/%Y"), sum: cash, balance: balance})
   end
 
-  def withdraw(cash, date)
+  def withdraw(cash)
     @balance -= cash unless (@balance - cash <= 0)
-    @history.push({date: date, sum: -cash, balance: balance})
+    @history.push({date: Time.now.strftime("%d/%m/%Y"), sum: -cash, balance: balance})
   end
 
 end

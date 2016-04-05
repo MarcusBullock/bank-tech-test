@@ -10,17 +10,17 @@ describe Account do
   end
 
   it '-> should allow money to be deposited' do
-    account.deposit(100, '10/10/2016')
-    expect(account.history).to eq([{:date=>"10/10/2016", :sum=>100, :balance=>100}])
+    account.deposit(100)
+    expect(account.history).to eq([{:date=>"05/04/2016", :sum=>100, :balance=>100}])
   end
 
   it '-> should allow money to be withdrawn' do
-    account.deposit(100, '09/09/2016')
-    expect{account.withdraw(10, '10/10/2016')}.to change{account.balance}.by(-10)
+    account.deposit(100)
+    expect{account.withdraw(10)}.to change{account.balance}.by(-10)
   end
 
   it '-> won\'t let money be withdrawn past the 0 mark' do
-    expect{account.withdraw(1, '10/10/2016')}.to_not change{account.balance}
+    expect{account.withdraw(1)}.to_not change{account.balance}
   end
 
 
